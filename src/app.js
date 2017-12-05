@@ -3,11 +3,16 @@ const  app = express();
 const morgan = require('morgan');
 const bodyParser =require('body-parser');
 
+// config =
+//     {
+//         secret: "ilovescotchyscotch"
+//     };
 
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 
+app.set('superSecret', config.secret);
 
 //routes
 require('./routes/userRoutes')(app);

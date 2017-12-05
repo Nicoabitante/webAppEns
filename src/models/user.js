@@ -21,7 +21,9 @@ userModel.login = (data,callback) =>{
         connection.query(sql, (err, rows) => {
             if(err){
                 throw err;
-            }else callback(null, rows);
+            }else if (rows.length > 0){
+                callback(null, rows)
+            }else { callback("error", null)}
         })
     }
 
