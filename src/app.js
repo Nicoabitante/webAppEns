@@ -12,8 +12,6 @@ const bodyParser =require('body-parser');
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 
-app.set('superSecret', config.secret);
-
 //routes
 require('./routes/userRoutes')(app);
 require('./routes/taskRoutes')(app);
