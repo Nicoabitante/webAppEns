@@ -11,6 +11,7 @@ app.use(bodyParser.json());
 
 //routes
 require('./routes/userRoutes')(app);
+require('./routes/taskRoutes')(app);
 
 
 app.listen(3000 , () => {
