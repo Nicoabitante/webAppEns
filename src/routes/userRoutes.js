@@ -16,7 +16,7 @@ module.exports =function (app) {
                })
            }else {
                const payload = {
-                   id: data.id
+                   sub: data.id
                };
                let token = jwt.sign(payload, config.TOKEN_SECRET, {
                    expiresIn: 1440 // expires in 24 hours
