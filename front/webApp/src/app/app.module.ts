@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import {LoginService} from "./login/login.service";
 import {Http, HttpModule} from "@angular/http";
 import { TasksComponent } from './tasks/tasks.component';
+import {TasksService} from "./tasks/tasks.service";
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { TasksComponent } from './tasks/tasks.component';
     BrowserModule,
     FormsModule
   ],
-  providers: [LoginService],
+  providers: [LoginService, TasksService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

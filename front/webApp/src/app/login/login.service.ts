@@ -9,7 +9,7 @@ export class LoginService {
 
   login(user: User){
     this.http.post('http://localhost:3000/login',{"username": user.username, "password": user.password
-    }).subscribe( data => localStorage.setItem("data", data.text()),
+    }).subscribe( data => localStorage.setItem("data", JSON.stringify(data)),
       err => console.log(err.text()),
       () => console.log(localStorage.getItem("data")));
   }
