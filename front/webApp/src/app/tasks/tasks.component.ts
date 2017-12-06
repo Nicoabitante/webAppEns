@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {TasksService} from "./tasks.service";
+import {Task} from "../model/task";
 
 @Component({
   selector: 'app-tasks',
@@ -11,18 +12,14 @@ export class TasksComponent implements OnInit {
   private datos = JSON.parse(localStorage.getItem('data'));
 
 
-  constructor(taskSerive : TasksService) { }
+  constructor( private taskService : TasksService) { }
 
   ngOnInit() {
     this.getTask()
   }
   getTask(){
-    console.log(this.datos);
-    console.log(this.datos.token)
-    // this.id = this.datos.data.id;
-    // this.token = this.datos.token;
-    // console.log(this.id);
-    // console.log(this.token);
+    this.taskService.getTask(2,this.datos.token).subscribe( data =>this.tasks= data );
+    console.log(this.tasks);
   }
 
   logout(){

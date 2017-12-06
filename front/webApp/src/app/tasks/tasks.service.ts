@@ -13,12 +13,12 @@ export class TasksService {
 
   constructor(private http: Http) { }
 
-  getTask(id: number, token: string): Observable<Task>{
+  getTask(id: number, token: string): Observable<Task[]>{
     const headers = new Headers();
     headers.append('x-access-token', token);
 
     return this.http.get(`${this.resourceUrl}/${id}`,{headers: headers}).map((res: Response) => {
-      return res.json();
+      return res.json().data as Task[];
     });
   }
 
