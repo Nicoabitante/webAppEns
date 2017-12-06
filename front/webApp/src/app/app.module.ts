@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import {LoginService} from "./login/login.service";
 import {Http, HttpModule} from "@angular/http";
+import { TasksComponent } from './tasks/tasks.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    TasksComponent
   ],
   imports: [
     HttpModule,

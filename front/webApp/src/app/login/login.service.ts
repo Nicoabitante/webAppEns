@@ -9,9 +9,16 @@ export class LoginService {
 
   login(user: User){
     this.http.post('http://localhost:3000/login',{"username": user.username, "password": user.password
-    }).subscribe( data => localStorage.setItem("token", data.text()),
+    }).subscribe( data => localStorage.setItem("data", data.text()),
       err => console.log(err.text()),
-      () => console.log("ok"))
+      () => console.log(localStorage.getItem("data")));
   }
-
+  isAuthenticated(){
+    if(localStorage.getItem("data")){
+      return true
+    }
+    else {
+      return false
+    }
+  }
 }

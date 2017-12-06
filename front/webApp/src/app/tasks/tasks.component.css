@@ -1,0 +1,9 @@
+.menu{
+  width: 100%;
+}
+
+.tasklist i {
+  float: right;
+  margin-left: 0.5em;
+  cursor: pointer;
+}
