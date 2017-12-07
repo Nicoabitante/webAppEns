@@ -9,8 +9,8 @@
 <h1> Mi Lista De Tareas</h1>
 <div class="tasklist">
   <ul class="list-group">
-    <li class="list-group-item" *ngFor="let task of tasks"><input type="checkbox" onclick="return false;">
-      {{task.description}}{{task.taken}}
+    <li class="list-group-item" *ngFor="let task of tasks"><input type="checkbox" [checked]="task.taken == 1" onclick="return false;">
+      {{task.description}}
       <i class="fa fa-edit" (click)="open(content,task.id)"></i> <i (click)="deleteTask(task.id)" class="fa fa-trash-o"></i>
     </li>
   </ul>
