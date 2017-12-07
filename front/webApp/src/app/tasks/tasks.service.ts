@@ -22,10 +22,30 @@ export class TasksService {
       return res.json() as Task[];
     });
   }
+  getTaskById(id:number): Observable<Task>{
+    const headers = new Headers();
+    headers.append('x-access-token', this.datos.token);
+
+    return this.http.get(`${this.resourceUrl}/${id}`,{headers: headers}).map((res: Response) => {
+      return res.json() as Task;
+    });
+  }
+
   postTask(task:Task){
     const headers = new Headers();
     headers.append('x-access-token', this.datos.token);
     this.http.post(`${this.resourceUrl}`,task,{headers: headers}).subscribe( res => {
+        console.log(res);
+      },
+      err => {
+        console.log("Error occured");
+      });
+
+  }
+  putTask(task:Task){
+    const headers = new Headers();
+    headers.append('x-access-token', this.datos.token);
+    this.http.put(`${this.resourceUrl}/${task.id}`,task,{headers: headers}).subscribe( res => {
         console.log(res);
       },
       err => {

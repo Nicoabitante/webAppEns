@@ -17,6 +17,18 @@ taskModel.getByUser = function(userId, callback) {
         })
     }
 };
+taskModel.getById = function(id, callback) {
+    if(connection){
+        const sql = `SELECT * FROM tasks WHERE id = ${connection.escape(id)}`;
+        connection.query(sql, (err, rows)=> {
+            if(err){
+                throw err;
+            }else {
+                callback(null, rows[0]);
+            }
+        })
+    }
+};
 
 taskModel.createTask = (data, callback) => {
     if(connection){

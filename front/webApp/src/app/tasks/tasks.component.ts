@@ -10,7 +10,7 @@ import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 })
 export class TasksComponent implements OnInit {
   private tasks:any[];
-  private task:Task
+  private task:Task;
 
   closeResult: string;
 
@@ -32,13 +32,29 @@ export class TasksComponent implements OnInit {
     this.taskService.deleteTask(id);
     this.getTask();
   }
+  putTask(task:Task){
+    this.taskService.putTask(task);
+  }
 
-  open(content) {
-    this.modalService.open(content).result.then((result) => {
-      this.postTask(this.task); this.getTask();
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
+  open(content, id:number) {
+    if(id != null){
+      this.taskService.getTaskById(id).subscribe(data => this.task = data);
+      this.modalService.open(content).result.then((result) => {
+        this.putTask(this.task); this.getTask();
+      }, (reason) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      });
+
+    }else {
+      this.task = new Task;
+      this.modalService.open(content).result.then((result) => {
+        this.postTask(this.task); this.getTask();
+      }, (reason) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      });
+
+    }
+
   }
 
   private getDismissReason(reason: any): string {

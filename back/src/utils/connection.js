@@ -8,7 +8,7 @@ Connection.getConection=()=>{
         {
             host: 'localhost',
             user: 'root',
-            password: 'kairos',
+            password: 'nico0208',
             database: 'dbapp'
         }
     );

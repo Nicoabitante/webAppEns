@@ -14,6 +14,19 @@ module.exports = function (app) {
 
         })
     });
+    app.get('/tasks/:id', (req, res) => {
+        Task.getById(req.params.id, (err, data) => {
+            if(data){
+                res.json(data)
+            }else {
+                res.json({
+                    "succes": false,
+                    "msg": "error"
+                })
+            }
+
+        })
+    });
     app.post('/tasks', function(req, res) {
         const taskData ={
             id: null,
