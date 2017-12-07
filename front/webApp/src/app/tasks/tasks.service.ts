@@ -33,5 +33,17 @@ export class TasksService {
       });
 
   }
+  deleteTask(id:number){
+    const headers = new Headers();
+    headers.append('x-access-token', this.datos.token);
+    this.http.delete(`${this.resourceUrl}/${id}`,{headers:headers}).subscribe(
+      res => {
+        console.log(res);
+      },
+      err => {
+        console.log("Error occured");
+      });
+
+  }
 
 }

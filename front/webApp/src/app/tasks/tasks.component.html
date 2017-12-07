@@ -9,7 +9,7 @@
 <h1> Mi Lista De Tareas</h1>
 <div class="tasklist">
   <ul class="list-group">
-    <li class="list-group-item" *ngFor="let task of tasks"><input type="checkbox" onclick="return false;">{{task.description}}{{task.id}}{{task.taken}}  <i class="fa fa-edit"></i> <i class="fa fa-trash-o"></i></li>
+    <li class="list-group-item" *ngFor="let task of tasks"><input type="checkbox" onclick="return false;">{{task.description}}{{task.taken}}  <i class="fa fa-edit"></i> <i (click)="deleteTask(task.id)" class="fa fa-trash-o"></i></li>
   </ul>
   <button (click)="open(content)"class="btn btn-lg btn-primary">Nueva Tarea</button>
 

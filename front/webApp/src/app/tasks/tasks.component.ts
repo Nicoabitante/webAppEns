@@ -26,7 +26,11 @@ export class TasksComponent implements OnInit {
   }
   postTask(task:Task){
      this.taskService.postTask(task);
-    
+
+  }
+  deleteTask(id:number){
+    this.taskService.deleteTask(id);
+    this.getTask();
   }
 
   open(content) {
