@@ -8,14 +8,19 @@ import {LoginService} from "./login/login.service";
 import {Http, HttpModule} from "@angular/http";
 import { TasksComponent } from './tasks/tasks.component';
 import {TasksService} from "./tasks/tasks.service";
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    TasksComponent
+    TasksComponent,
+
+
   ],
   imports: [
+    NgbModule.forRoot(),
     HttpModule,
     BrowserModule,
     FormsModule

@@ -10,16 +10,28 @@ import { Response } from '@angular/http';
 @Injectable()
 export class TasksService {
   private  resourceUrl ='http://localhost:3000/tasks';
+  private datos = JSON.parse(localStorage.getItem('data'));
 
   constructor(private http: Http) { }
 
-  getTask(id: number, token: string): Observable<Task[]>{
+  getTask(): Observable<Task[]>{
     const headers = new Headers();
-    headers.append('x-access-token', token);
+    headers.append('x-access-token', this.datos.token);
 
-    return this.http.get(`${this.resourceUrl}/${id}`,{headers: headers}).map((res: Response) => {
-      return res.json().data as Task[];
+    return this.http.get(`${this.resourceUrl}`,{headers: headers}).map((res: Response) => {
+      return res.json() as Task[];
     });
+  }
+  postTask(task:Task){
+    const headers = new Headers();
+    headers.append('x-access-token', this.datos.token);
+    this.http.post(`${this.resourceUrl}`,task,{headers: headers}).subscribe( res => {
+        console.log(res);
+      },
+      err => {
+        console.log("Error occured");
+      });
+
   }
 
 }

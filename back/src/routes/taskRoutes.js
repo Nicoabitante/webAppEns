@@ -1,8 +1,8 @@
 const Task = require('../models/task');
 
 module.exports = function (app) {
-    app.get('/tasks/:id', (req, res) => {
-       Task.getByUser(req.params.id, (err, data) => {
+    app.get('/tasks', (req, res) => {
+       Task.getByUser(req.decoded.sub, (err, data) => {
            if(data){
                res.json(data)
            }else {
@@ -19,7 +19,7 @@ module.exports = function (app) {
             id: null,
             description: req.body.description,
             taken: 0,
-            userId: req.body.userId
+            userId: req.decoded.sub
         };
         Task.createTask(taskData, (err, data) =>{
             if(data && data.insertId){
