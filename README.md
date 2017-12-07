@@ -7,7 +7,10 @@ webAppEns/back/src/utils/, el archivo se llama connection.js dentro deberan camb
 
 Una Vez tengamos esto para levantar la aplicacion debemos 
 
-Como primer paso desde consola pararse en webAppEns/back y ejecutar el comando: node src/app.js 
+Como primer paso desde consola pararse en webAppEns/back y ejecutar el comando: npm install 
+Luego  en front/webApp  ejecutar npm install, para que instale todas las dependecias del proyecto
+
+Como segundo paso desde consola pararse en webAppEns/back y ejecutar el comando: node src/app.js 
 Luego pararce en front/webApp y ejecutar ng serve
 
 La aplicacion correra en el puerto 4200, para ingresar desde el navegador vamos a localhost:4200
